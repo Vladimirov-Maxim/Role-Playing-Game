@@ -2,18 +2,26 @@ import java.util.*;
 
 public class Hero extends Person{
 
+    private static final int INITIAL_AGILITY = 20;
+    private static final int INITIAL_HEALTH = 200;
+    private static final int INITIAL_STRENGTH = 20;
+    private static final int INITIAL_MAX_HEALTH = 200;
+
     private volatile int maxHealth;
     private final Inventory inventory;
 
     public Hero(String name) {
         super(name);
+
         this.experience = 0;
-        this.strength = 20;
-        this.agility = 20;
-        this.health = 200;
-        this.level = 1;
         this.gold = 0;
-        this.maxHealth = 200;
+        this.level = 1;
+
+        this.strength = INITIAL_STRENGTH;
+        this.agility = INITIAL_AGILITY;
+        this.health = INITIAL_HEALTH;
+        this.maxHealth = INITIAL_MAX_HEALTH;
+
         inventory = new Inventory();
     }
 
@@ -94,10 +102,10 @@ public class Hero extends Person{
             level = newLevel;
             System.out.println("\nВы достигли " + level + " уровня!");
 
-            strength*=level;
-            agility*=level;
-            maxHealth*=level;
-            health*=level;
+            strength = INITIAL_STRENGTH * level;
+            agility = INITIAL_AGILITY * level;
+            maxHealth = INITIAL_MAX_HEALTH * level;
+            health = INITIAL_HEALTH * level;
 
         }
 
